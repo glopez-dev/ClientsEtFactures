@@ -5,8 +5,10 @@ import java.util.List;
 
 public class Client
 {
-	
+	// Champs de Classe
 	private static final List<Client> listeClients = new ArrayList<>();
+	// Champs d'instance
+	private ArrayList<Facture> factures = new ArrayList<Facture>();
 	private String nomclient;
 	
 	/** 
@@ -37,6 +39,7 @@ public class Client
 	
 	public void setNom(String nom)
 	{
+		this.nomclient = nom;
 	}
 	
 	/**
@@ -47,8 +50,11 @@ public class Client
 	
 	public Facture createFacture(int montant)
 	{
-		return null;
+		Facture f = new Facture(montant, this);
+		this.factures.add(f);
+		return f;
 	}
+
 	
 	/**
 	 * Retourne une copie de la liste des factures du client. 
@@ -57,7 +63,12 @@ public class Client
 
 	public List<Facture> getFactures()
 	{
-		return null;
+		ArrayList<Facture> copieListeFactures = new ArrayList<Facture>();
+		for (int i = 0; i < this.factures.size(); i++)
+		{
+			copieListeFactures.add(this.factures.get(i));
+		}
+		return copieListeFactures;
 	}
 	
 	/**

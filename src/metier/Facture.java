@@ -21,7 +21,7 @@ public class Facture
 	
 	public Client getClient()
 	{
-		return null;
+		return this.client;
 	}
 
 	/**
@@ -31,7 +31,7 @@ public class Facture
 	
 	public int getMontant()
 	{
-		return 0;
+		return this.montantfacture;
 	}
 
 	/**
