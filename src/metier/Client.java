@@ -63,7 +63,7 @@ public class Client
 
 	public List<Facture> getFactures()
 	{
-		ArrayList<Facture> copieListeFactures = new ArrayList<Facture>();
+		List<Facture> copieListeFactures = new ArrayList<Facture>();
 		for (int i = 0; i < this.factures.size(); i++)
 		{
 			copieListeFactures.add(this.factures.get(i));
@@ -142,8 +142,12 @@ public class Client
 	{
 		if (montant < 0)
 		{
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Le montant d'une facture ne peut pas être négatif.");
 		}
 		else return montant;
 	}
+	
+	
+	
 }
+
