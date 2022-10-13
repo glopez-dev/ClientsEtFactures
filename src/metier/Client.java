@@ -6,6 +6,7 @@ import java.util.List;
 public class Client
 {
 	
+	private static final List<Client> listeClients = new ArrayList<>();
 	private String nomclient;
 	
 	/** 
