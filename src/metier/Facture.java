@@ -4,6 +4,16 @@ import java.time.LocalDate;
 
 public class Facture
 {
+	private Client client;
+	private int montantfacture;
+
+	// Constructeur Facture à deux paramètres
+	public Facture(int montant, Client client)
+	{
+		this.montantfacture = montant;
+		this.client = client;
+	}
+	
 	/**
 	 * Retourne le client à qui est adressée la facture..
 	 * @return le client.
