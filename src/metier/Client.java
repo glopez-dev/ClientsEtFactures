@@ -147,7 +147,9 @@ public class Client
 		else return montant;
 	}
 	
-	
-	
+	public void deleteFacture(Facture facture)
+	{
+		factures.remove(facture);
+	}
 }
 
