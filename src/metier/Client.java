@@ -6,7 +6,7 @@ import java.util.List;
 public class Client
 {
 	// Champs de Classe
-	private static final List<Client> listeClients = new ArrayList<>();
+	private static final List<Client> listeClients = new ArrayList<Client>();
 	// Champs d'instance
 	private ArrayList<Facture> factures = new ArrayList<Facture>();
 	private String nomclient;
@@ -126,7 +126,12 @@ public class Client
 	 */
 	public static List<Client> tous()
 	{
-		return Client.listeClients;
+		List<Client> clients = new ArrayList<>();
+		for (int i = 0; i < Client.listeClients.size(); i++)
+		{
+			 clients.add(Client.listeClients.get(i));
+		}
+		return clients;
 	}
 	
 	/**
