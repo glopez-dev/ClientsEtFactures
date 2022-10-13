@@ -18,7 +18,7 @@ public class Client
 	
 	public Client(String nom)
 	{
-		listeClients.add(this);
+		Client.listeClients.add(this);
 		this.nomclient = nom;
 	}
 
@@ -50,7 +50,7 @@ public class Client
 	
 	public Facture createFacture(int montant)
 	{
-		Facture f = new Facture(montant, this);
+		Facture f = new Facture(testMontant(montant), this);
 		this.factures.add(f);
 		return f;
 	}
@@ -95,7 +95,7 @@ public class Client
 	
 	public Facture createFacture(int montant, boolean reglee)
 	{
-		Facture f = new Facture(montant, reglee, this);
+		Facture f = new Facture(testMontant(montant), reglee, this);
 		this.factures.add(f);
 		return f;
 	}	
@@ -136,5 +136,14 @@ public class Client
 	public void delete()
 	{
 		Client.listeClients.remove(this);
+	}
+	
+	public static int testMontant(int montant)
+	{
+		if (montant < 0)
+		{
+			throw new IllegalArgumentException();
+		}
+		else return montant;
 	}
 }
