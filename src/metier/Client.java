@@ -107,7 +107,16 @@ public class Client
 
 	public List<Facture> facturesReglees()
 	{
-		return null;
+		ArrayList<Facture> facturesReglees = new ArrayList<Facture>();
+		for (int i = 0; i < this.factures.size(); i++)
+		{
+			Facture f = this.factures.get(i);
+			if (f.estReglee() == true)
+			{
+				facturesReglees.add(f);
+			}
+		}
+		return facturesReglees;
 	}
 	
 
