@@ -85,6 +85,11 @@ public class Client
 		return copieListeFactures;
 	}
 	
+	public void addFacture(Facture f)
+	{
+		factures.add(f);
+	}
+	
 	/**
 	 * Retourne la somme des montants des factures.
 	 * @return la somme des montants des factures.
