@@ -78,7 +78,12 @@ public class Client
 	
 	public int sommeMontants()
 	{
-		return 0;
+		int somme = 0;
+		for (int i = 0; i < this.factures.size(); i++)
+		{
+			somme += this.factures.get(i).getMontant();
+		}
+		return somme;
 	}
 
 	/**
@@ -90,7 +95,9 @@ public class Client
 	
 	public Facture createFacture(int montant, boolean reglee)
 	{
-		return null;
+		Facture f = new Facture(montant, reglee, this);
+		this.factures.add(f);
+		return f;
 	}	
 	
 	/**
