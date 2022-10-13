@@ -16,7 +16,7 @@ public class Facture
 		this.client = client;
 		// Initialisation des champs non fournis en paramètres
 		this.datefacture = LocalDate.now();
-		this.reglementfacture = false;;
+		this.reglementfacture = false;
 	}
 	
 	// Constructeur Facture a trois paramètres
@@ -32,7 +32,7 @@ public class Facture
 	// Constructeur Facture à 4 paramètres utilisé dans copie()
 	public Facture(int montant, boolean reglee, LocalDate date, Client client)
 	{
-		this.montantfacture = montant;
+		this.montantfacture = Client.testMontant(montant);
 		this.reglementfacture = reglee;
 		this.client = client;
 		// Initialisation des champs non fournis en paramètres
@@ -95,13 +95,8 @@ public class Facture
 	
 	public Facture copie()
 	{
-		int montant = this.montantfacture;
-		Client client = this.client;
-		boolean reglementfacture = this.reglementfacture;
-		LocalDate date = this.datefacture;
-		
-		Facture copie = new Facture(montant, reglementfacture, date, client);
-		
+		Facture copie = new Facture(this.montantfacture, this.reglementfacture, this.datefacture, this.client);
+		client.addFacture(copie);
 		return copie;
 	}
 }
