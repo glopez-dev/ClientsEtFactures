@@ -6,12 +6,27 @@ public class Facture
 {
 	private Client client;
 	private int montantfacture;
+	private LocalDate datefacture; 
+	private boolean reglementfacture;
 
 	// Constructeur Facture à deux paramètres
 	public Facture(int montant, Client client)
 	{
 		this.montantfacture = montant;
 		this.client = client;
+		// Initialisation des champs non fournis en paramètres
+		this.datefacture = LocalDate.now();
+		this.reglementfacture = false;;
+	}
+	
+	// Constructeur Facture a trois paramètres
+	public Facture(int montant, boolean reglee, Client client)
+	{
+		this.montantfacture = montant;
+		this.reglementfacture = reglee;
+		this.client = client;
+		// Initialisation des champs non fournis en paramètres
+		this.datefacture = LocalDate.now();
 	}
 	
 	/**
@@ -41,7 +56,7 @@ public class Facture
 	
 	public boolean estReglee()
 	{
-		return true;
+		return this.reglementfacture;
 	}
 
 	/**
@@ -51,7 +66,7 @@ public class Facture
 	
 	public LocalDate getDate()
 	{
-		return null;
+		return this.datefacture;
 	}
 
 	/**
