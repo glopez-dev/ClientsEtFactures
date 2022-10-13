@@ -6,7 +6,7 @@ import java.util.List;
 public class Client
 {
 	// Champs de Classe
-	private static final List<Client> listeClients = new ArrayList<Client>();
+	private static final List<Client> LISTECLIENTS = new ArrayList<Client>();
 	// Champs d'instance
 	private ArrayList<Facture> factures = new ArrayList<Facture>();
 	private String nomclient;
@@ -18,7 +18,7 @@ public class Client
 	
 	public Client(String nom)
 	{
-		Client.listeClients.add(this);
+		Client.LISTECLIENTS.add(this);
 		this.nomclient = nom;
 	}
 
@@ -54,6 +54,20 @@ public class Client
 		this.factures.add(f);
 		return f;
 	}
+	
+	/**
+	 * Créé une facture en précisant si elle est reglée.
+	 * @param montant Le montant de la facture.
+	 * @param reglée Vrai si la facture est reglée.
+	 * @return la facture créée.
+	 */
+	
+	public Facture createFacture(int montant, boolean reglee)
+	{
+		Facture f = new Facture(testMontant(montant), reglee, this);
+		this.factures.add(f);
+		return f;
+	}	
 
 	
 	/**
@@ -85,20 +99,6 @@ public class Client
 		}
 		return somme;
 	}
-
-	/**
-	 * Créé une facture en précisant si elle est reglée.
-	 * @param montant Le montant de la facture.
-	 * @param reglée Vrai si la facture est reglée.
-	 * @return la facture créée.
-	 */
-	
-	public Facture createFacture(int montant, boolean reglee)
-	{
-		Facture f = new Facture(testMontant(montant), reglee, this);
-		this.factures.add(f);
-		return f;
-	}	
 	
 	/**
 	 * Retourne la liste des factures reglées. 
@@ -111,7 +111,7 @@ public class Client
 		for (int i = 0; i < this.factures.size(); i++)
 		{
 			Facture f = this.factures.get(i);
-			if (f.estReglee() == true)
+			if (f.estReglee())
 			{
 				facturesReglees.add(f);
 			}
@@ -127,9 +127,9 @@ public class Client
 	public static List<Client> tous()
 	{
 		List<Client> clients = new ArrayList<>();
-		for (int i = 0; i < Client.listeClients.size(); i++)
+		for (int i = 0; i < Client.LISTECLIENTS.size(); i++)
 		{
-			 clients.add(Client.listeClients.get(i));
+			clients.add(Client.LISTECLIENTS.get(i));
 		}
 		return clients;
 	}
@@ -140,7 +140,7 @@ public class Client
 	
 	public void delete()
 	{
-		Client.listeClients.remove(this);
+		Client.LISTECLIENTS.remove(this);
 	}
 	
 	public static int testMontant(int montant)
