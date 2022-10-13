@@ -126,7 +126,7 @@ public class Client
 	 */
 	public static List<Client> tous()
 	{
-		return null;
+		return Client.listeClients;
 	}
 	
 	/**
@@ -135,5 +135,6 @@ public class Client
 	
 	public void delete()
 	{
+		Client.listeClients.remove(this);
 	}
 }

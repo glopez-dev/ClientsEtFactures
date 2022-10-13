@@ -29,6 +29,16 @@ public class Facture
 		this.datefacture = LocalDate.now();
 	}
 	
+	// Constructeur Facture à 4 paramètres utilisé dans copie()
+	public Facture(int montant, boolean reglee, LocalDate date, Client client)
+	{
+		this.montantfacture = montant;
+		this.reglementfacture = reglee;
+		this.client = client;
+		// Initialisation des champs non fournis en paramètres
+		this.datefacture = date;
+	}
+	
 	/**
 	 * Retourne le client à qui est adressée la facture..
 	 * @return le client.
@@ -75,6 +85,7 @@ public class Facture
 	
 	public void delete()
 	{
+		client.getFactures().remove(this);
 	}
 	
 	/**
@@ -84,6 +95,13 @@ public class Facture
 	
 	public Facture copie()
 	{
-		return null;
+		int montant = this.montantfacture;
+		Client client = this.client;
+		boolean reglementfacture = this.reglementfacture;
+		LocalDate date = this.datefacture;
+		
+		Facture copie = new Facture(montant, reglementfacture, date, client);
+		
+		return copie;
 	}
 }
