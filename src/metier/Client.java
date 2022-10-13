@@ -150,7 +150,7 @@ public class Client
 	
 	public static int testMontant(int montant)
 	{
-		if (montant < 0)
+		if (montant <= 0)
 		{
 			throw new IllegalArgumentException("Le montant d'une facture ne peut pas être négatif.");
 		}
